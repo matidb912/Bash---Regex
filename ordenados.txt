@@ -1,0 +1,5 @@
+total 12
+-rwxrwxr-x 1 matias matias 5682 Mar 23 19:53 my_script.sh
+-rw-rw-r-- 1 matias matias   16 Mar 23 18:51 ejercicio_1.sh
+-rw-rw-r-- 1 matias matias    0 Mar 23 19:53 ordenados.txt
+-rw-rw-r-- 1 matias matias    0 Mar 23 19:27 primos.txt
