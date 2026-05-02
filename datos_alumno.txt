@@ -3,3 +3,12 @@ Diaz
 112233
 aaaaaaaaaaaaaaaaaa
 
+Matias
+Diaz
+115023
+Fundamentos
+
+name
+lastName
+id
+favoriteSubject

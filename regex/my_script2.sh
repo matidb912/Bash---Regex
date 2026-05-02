@@ -1,74 +1,75 @@
 # Encontrar la expresión regular de Regex que devuelve:
 
-# Las ocurrencias de la letra s.
+#1. Las ocurrencias de la letra s.
 
-# grep -ic -E "s" ./regex/oraciones.txt
+# grep -o "s" oraciones.txt
 
-# Las ocurrencias de un caracter, seguido de la letra o (ej. to).
+#2. Las ocurrencias de un caracter, seguido de la letra o (ej. to).
 
-# grep -ic -E "[a-z]o" ./regex/oraciones.txt
+# grep -Eo ".o" oraciones.txt
 
-# Todos los dígitos en el archivo.
+#3. Todos los dígitos en el archivo.
 
-# grep -E "[1-9]" ./regex/oraciones.txt
+# grep -Eo "[0-9]" oraciones.txt
 
-# Las ocurrencias del punto (.).
+#4. Las ocurrencias del punto (.).
 
-# grep -ic -E "\." ./regex/oraciones.txt
+# grep -Eo "\." oraciones.txt
 
-# Las ocurrencias de la letra c al comienzo de la palabra.
+#5. Las ocurrencias de la letra c al comienzo de la palabra.
 
-# grep -i -E " c" ./regex/oraciones.txt
+# grep -io -E "\sc[a-z]+\s" oraciones.txt
 
-# Las palabras que comienzan con la letra p (no es necesario incluir las mayúsculas).
+#6. Las palabras que comienzan con la letra p (no es necesario incluir las mayúsculas).
 
-# grep -E " p" ./regex/oraciones.txt
+# grep -o -E "\sp[a-z]+\s" oraciones.txt
 
+# ¿Qué devuelven las siguientes expresiones regulares?
 
-
-
+# 7. ^L
+# Todas las lineas que empiezen con L
+# grep "^L" oraciones.txt
+# 8. !$
+# Devuelve las lineas que terminan con !
+# grep "!$" oraciones.txt
+# 9.  (espacio)
+# Devuelve las lineas con espacio
+# grep " " oraciones.txt
+# 10. [A-Z1-3]
+# Devuelve todas las lineas que tengan una letra de la A a la Z mayuscula o un numero del 1 al 3
+# grep "[A-Z1-3]" oraciones.txt
 
 
 # Se tiene el archivo contraseñas.csv, el cual almacena las contraseñas de distintos usuarios en una plataforma. La estructura es nombre_usuario,contraseña. Se pide extraer, del archivo:
 
-# Los nombres de usuario que contienen números.
+# 11. Los nombres de usuario que contienen números.
 
-# cat regex/usuarios_y_contrasenas.csv | grep -oE "^[^,]*[0-9][^,]*," | sed "s/,//"
+# grep -Eo "\w*[0-9]+\w*" contrasenas.csv
 
-# Los nombres de usuario con al menos un guión bajo (_).
+# 12. Los nombres de usuario con al menos un guión bajo (_).
 
-# grep -oE "^[^,]*\_[^,]*," regex/usuarios_y_contrasenas.csv | sed "s/,//"
+# grep -Eo "\w*\_+\w*" contrasenas.csv
 
-# Las contraseñas alfanúmericas.
+# 13. Las contraseñas alfanúmericas.
 
-# grep -oE ",\w*[0-9]+\w*" regex/usuarios_y_contrasenas.csv | sed "s/,//"
+# grep -Po "(?<=,)[a-zA-Z0-9]+$" contrasenas.csv 
 
-# Los nombres de usuario alfanuméricos.
+# 14. Los nombres de usuario alfanuméricos.
 
-# grep -oE "^[A-Za-z0-9]+," regex/usuarios_y_contrasenas.csv | sed "s/,//"
+# grep -Eo "^\w+" contrasenas.csv
 
-# Las contraseñas que comienzen y terminen con el mismo caracter.
+# 15. Las contraseñas que comienzen y terminen con el mismo caracter.
+# grep -P -o "(?<=,)(.).*\1$" contrasenas.csv
 
-# caracter_inicial=$(grep -oE ",\w" regex/usuarios_y_contrasenas.csv | sed "s/,//")
-# # grep -oE ",$caracter_inicial\w+$$caracter_inicial" regex/usuarios_y_contrasenas.csv 
+# 16. Las contraseñas con exactamente 14 caracteres (de cualquier tipo).
 
-# for a in $caracter_inicial; do
-#     if [ $(grep -oE ",$a\w+$a" regex/usuarios_y_contrasenas.csv) ]; then
-#          grep -oE ",$a\w+$a" regex/usuarios_y_contrasenas.csv | sed "s/,//"
-#     fi
-# done
-
-# grep -oE ",(.).*\1$" regex/usuarios_y_contrasenas.csv | sed "s/,//"
-
-# Las contraseñas con exactamente 14 caracteres (de cualquier tipo).
-
-# grep -oE ",.{14}" regex/usuarios_y_contrasenas.csv | sed "s/,//"
+# grep -P -o "(?<=,).{14}$" contrasenas.csv
 
 
-# Las contraseñas seguras; son las que contienen al menos:
+#17.  Las contraseñas seguras; son las que contienen al menos:
 # 1 letra minúscula
 # 1 letra mayúscula
 # 1 número
 # 1 caracter especial (@$!%*?&#)
 
-grep -E ",[^ ]*[a-z]" regex/usuarios_y_contrasenas.csv | grep -E ",[^ ]*[A-Z]" | grep -E ",[^ ]*[0-9]" | grep -E ",[^ ]*[@\$!%\*\?&#]" | grep -oE ",[^,]+$" | sed 's/,//'
+# grep -P -o "(?<=,)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&#]).+$" contrasenas.csv

@@ -1,0 +1,16 @@
+total 32
+-rwxrwxr-x 1 matias matias 5944 May  1 18:56 my_script.sh
+-rw-rw-r-- 1 matias matias   86 Mar 26 11:01 actividades.txt
+-rw-rw-r-- 1 matias matias    2 Mar 26 11:01 primos.txt
+-rw-rw-r-- 1 matias matias   16 Mar 23 18:51 ejercicio_1.sh
+-rw-rw-r-- 1 matias matias  104 May  1 18:48 datos_alumno.txt
+-rw-rw-r-- 1 matias matias    0 May  1 18:57 ordenados.txt
+drwxrwxr-x 3 matias matias 4096 Mar 26 12:51 Ejercicios
+drwxrwxr-x 2 matias matias 4096 Mar 28 10:03 regex
+7
+11
+13
+17
+19
+23
+29

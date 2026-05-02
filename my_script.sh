@@ -139,19 +139,16 @@
 
 #Ejercicio 22. Crear un script de Bash que reciba como parámetro los nombres de dos archivos y una sus contenidos en uno nuevo llamado “concatenados.txt”.
 
-#archivos_concatenados=$(cat $1 $2)
-#echo "Archivos concatenados..."
-#echo $archivos_concatenados > concatenados.txt
-#echo "concatenados.txt fue creado exitosamente"
+# cat $2 $1 > concatenados.txt
 
-#Ejercicio 22. Crear un script de Bash que solicite al usuario un número natural n y cree n cantidad de carpetas con los nombres carpeta1, carpeta2, etc.
+#Ejercicio 23. Crear un script de Bash que solicite al usuario un número natural n y cree n cantidad de carpetas con los nombres carpeta1, carpeta2, etc.
 
-#read -p "Ingrese un numero natural n: " num
+# read -p "Ingrese un numero natural n: " num
 
-#for (( n=1; n<=num; n++)); do
-#	mkdir carpeta$n
-#	echo "Carpeta $n creada exitosamente"
-#done
+# for (( n=1; n<=num; n++)); do
+# 	mkdir carpeta$n
+# 	echo "Carpeta $n creada exitosamente"
+# done
 
 #24. Crear un script de Bash que solicite al usuario un número natural n e imprima en un archivo llamado “primos.txt” todos los números primos existentes hasta n.
 
@@ -180,15 +177,14 @@
 
 
 #26.Crear un script de Bash que solicite al usuario los siguientes datos: -Nombre -Apellido -Legajo -Materia preferida Luego imprimir en un archivo “datos_alumno.txt” toda la información.
+# read -p "Ingrese su nombre: " name
+# read -p "Ingrese su apellido: " lastName
+# read -p "Ingrese su legajo: " id
+# read -p "Ingrese su materia preferida: " favoriteSubject
 
-read -p "Ingrese su nombre: " nombre
-read -p "Ingrese su apellido: " apellido
-read -p "Ingrese su legajo: " legajo
-read -p "Ingrese su materia preferida: " mat_preferida
-
-for campo in $nombre $apellido $legajo $mat_preferida; do
-	echo $campo >> datos_alumno.txt 
-done
+# for i in $name $lastName $id $favoriteSubject; do
+# 	echo $i >> datos_alumno.txt
+# done
 
 ###################################################################
 
@@ -205,4 +201,3 @@ done
 
 # frutas+=("kiwi" "Toronja")
 # echo ${frutas[*]}
-
